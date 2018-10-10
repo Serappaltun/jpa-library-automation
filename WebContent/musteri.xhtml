@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<body>
+	<f:view>
+		<p:panel>
+			<f:facet name="header">Musteri Tanimlama Ekrani</f:facet>
+			<h:form>
+				<h:panelGrid columns="2">
+					Ad : <h:inputText value="#{musteriBean.musteri.ad}" />
+					Soyad : <h:inputText value="#{musteriBean.musteri.soyad}" />
+					Cadde : <h:inputText value="#{musteriBean.musteri.musteriAdres.cadde}" />
+					Sokak : <h:inputText value="#{musteriBean.musteri.musteriAdres.sokak}" />
+					<h:commandButton action="#{musteriBean.kaydet}" value="Kaydet" />
+				</h:panelGrid>
+			</h:form>
+			<h:form>
+				<p:dataTable value="#{musteriBean.musteriListesi}" var="must" width="600px">
+					<p:column>
+						<f:facet name="header">Sil</f:facet>
+						<p:commandLink action="#{musteriBean.sil}" value="Sil" >
+							<f:setPropertyActionListener value="#{must}" target="#{musteriBean.musteri}" />
+						</p:commandLink>
+					</p:column>
+				
+					<p:column>
+						<f:facet name="header">Ad</f:facet>
+						<h:outputText value="#{must.ad}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Soyad</f:facet>
+						<h:outputText value="#{must.soyad}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Cadde</f:facet>
+						<h:outputText value="#{must.musteriAdres.cadde}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Sokak</f:facet>
+						<h:outputText value="#{must.musteriAdres.sokak}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Maas</f:facet>
+						<h:outputText value="#{must.maas}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">Yillik Gelir</f:facet>
+						<h:outputText value="#{must.yillikGelir}"/>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+		</f:view>
+	</body>
+</html>

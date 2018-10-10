@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich">
+
+	<body>
+		<rich:panel>
+			<f:facet name="header">Musteri Düzenleme Ekrani</f:facet>
+			<h:form>
+				<rich:dataTable value="#{musteriBean.musteriListesi}" var="must" width="800px">
+					<h:column>
+						<f:facet name="header">Seç</f:facet>
+						<h:selectBooleanCheckbox value="#{must.secim}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Ad</f:facet>
+						<h:inputText value="#{must.ad}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Soyad</f:facet>
+						<h:inputText value="#{must.soyad}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Cadde</f:facet>
+						<h:inputText value="#{must.musteriAdres.cadde}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Sokak</f:facet>
+						<h:inputText value="#{must.musteriAdres.sokak}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Maas</f:facet>
+						<h:inputText value="#{must.maas}" />
+					</h:column>
+				</rich:dataTable>
+				<h:commandButton action="#{musteriBean.tumunuDuzenle}" value="Tümünü Düzenle" />
+				<h:commandButton action="#{musteriBean.secilenleriSil}" value="Secilenleri Sil" />
+			</h:form>
+		</rich:panel>
+	</body>
+</html>

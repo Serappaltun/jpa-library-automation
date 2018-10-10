@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				Ad:<h:inputText value="#{al.hoca.ad}" />
+				Soyad: <h:inputText value="#{al.hoca.soyad}" />
+				Yas: <h:inputText value="#{al.hoca.yas}" />
+				
+				<h:commandButton action="#{al.kaydet()}" value="Kaydet" />
+			</h:panelGrid>
+			<h:dataTable value="#{al.hocaListesi}" var="cls">
+			<h:column>
+			<h:outputText value="#{cls.ad}" />
+			</h:column>
+			<h:column>
+			<h:outputText value="#{cls.soyad}" />
+			</h:column>
+			<h:column>
+			<h:outputText value="#{cls.yas}" />
+			</h:column>
+			<h:column>
+			<h:outputText value="#{cls.cinsiyet}" />
+			</h:column>
+			<h:column>
+			<h:commandLink action="#{al.sil()}" value="Sil" >
+			<f:setPropertyActionListener value="#{cls}" target="#{al.hoca}" />
+			</h:commandLink>
+			</h:column>
+			<h:column>
+			<h:commandLink value="Sec" >
+			<f:setPropertyActionListener value="#{cls}" target="#{al.hoca}" />
+			</h:commandLink>
+			<h:commandButton action="#{al.duzenle()}" value="Duzenle" />
+			</h:column>
+			</h:dataTable>
+		</h:form>
+	</f:view>
+
+</body> 
+</html>
